@@ -3,35 +3,33 @@
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
 import os
 import unittest
-# from appium import webdriver
 from time import sleep
-sys.path.append("../BusinessUtils")
 sys.path.append("../Base")
 from base import myDriver
-
-# Returns abs path relative to this file and not cwd
-# PATH = lambda p: os.path.abspath(
-#     os.path.join(os.path.dirname(__file__), p)
-# )
 
 #类继承unittest.TestCase 类，从TestCase类继承是告诉unittest模块的方式，这是一个测试案例。
 class ContactsAndroidTests(unittest.TestCase):
     #setUp 用于设置初始化的部分，在测试用例执行前，这个方法中的函数将先被调用。
     def setUp(self):
         self.driver = myDriver()
+
     def tearDown(self):
-        self.driver.driver.close_app()
-        self.driver.driver.quit()
+        self.driver.close_app()
+        self.driver.quit()
 
     def test_add_contacts(self):
         print('start sleep')
-        # sleep(10)
+        sleep(10)
+
         # print("sleep 10s")
-        self.driver.clickOnElementByName("我")
-        # 
+        self.driver.clickOnElementByXpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]")
+        print("xpath clicked")
+        self.driver.set_value("13661962542")
+        self.driver.clickOnElementByXpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIASecureTextField[1]")
+        self.driver.set_value("qq123456")
+        sleep(5)
         # self.driver.clickOnElementByName('备孕')
         # self.driver.clickOnElementByName('下一步')
         # self.driver.clickOnElementByName('完成')
@@ -39,7 +37,6 @@ class ContactsAndroidTests(unittest.TestCase):
         # sleep(3)
         # self.driver.clickOnElementByName('月子会所')
         # sleep(3)
-        print("Edit clicked")
 
 #unitest.main()函数用来测试 类中以test开头的测试用例
 if __name__ == '__main__':

@@ -1,1 +1,8 @@
-a=1
+{
+	deviceName = "\U5468\U51ac\U5f6c\U7684 iPhone";
+	platform = ios;
+	platformVersion = "8.3";
+	app = "/Users/jimmy_zhou/appium/apk/MMbang_master_3.13.3_43365_Test_DEBUG.ipa";
+	udid = "f599ef571c56f9f2ecd18a49244b2690285ec750";
+	bundleId = "com.mmbang.main";
+}

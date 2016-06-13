@@ -203,6 +203,9 @@ ADDRESS="127.0.0.1"
 PORT=4723
 Timeout="7200"
 
-appium --address $ADDRESS --port $PORT --command-timeout $Timeout --log-timestamp --log-level info --no-reset
+appium --address $ADDRESS --port $PORT --command-timeout $Timeout --debug-log-spacing --automation-name "Appium" --platform-name "Android" --platform-version "4.2" &
 
-
+# curl "http://127.0.0.1:4723/wd/hub/status"
+# import requests
+# request=requests.get("http://127.0.0.1:4723/wd/hub/status")
+# print request.text
