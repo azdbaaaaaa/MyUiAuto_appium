@@ -46,35 +46,40 @@ class myDriver(object):
             raise e
         
 
-    def clickOnElementByName(self, name):
+    def click_on_element(self, UIA_type, method, name):
         try:
-            sleep(3)
-            e1 = self.driver.find_element_by_name(name)
+            print 1
+            # //UIAButton[@name='登录']
+            xpath = "//%s[@%s='%s']" % (UIA_type,method,name)
+            print("PATH:" + xpath)
+            e1 = self.driver.find_element_by_xpath(xpath)
             e1.click()
             print('点击元素成功')
         except Exception, e:
             print('点击元素失败')
             print(e)
 
+
     def clickOnElementByXpath(self, xpath):
         try:
-            sleep(3)
+            # sleep(3)
             e1 = self.driver.find_element_by_xpath(xpath)
             e1.click()
             print('点击元素成功')
         except Exception, e:
             print('点击元素失败')
-            raise e
+            print(e)
 
-    def set_value(self, element_xpath, value):
+    def set_value(self, UIA_type, method, value, content):
         try:
-            sleep(3)
-            element = self.driver.find_element_by_xpath(element_xpath)
-            self.driver.set_value(element, value)
+            xpath = "//%s[@%s='%s']" % (UIA_type,method,value)
+            print("PATH:" + xpath)
+            element = self.driver.find_element_by_xpath(xpath)
+            self.driver.set_value(element, content)
             print("输入成功")
         except Exception, e:
             print("输入失败")
-            raise e
+            print(e)
 
     def close_app(self):
         """Stop the running application, specified in the desired capabilities, on
@@ -85,7 +90,7 @@ class myDriver(object):
             print("退出应用成功")
         except Exception, e:
             print("退出应用失败")
-            raise e
+            print(e)
 
     def quit(self):
         try:
@@ -93,7 +98,13 @@ class myDriver(object):
             print("关闭成功")
         except Exception, e:
             print("关闭失败")
-            raise e
+            print(e)
+
+    def implicitly_wait(self, time):
+        try:
+            self.driver.implicitly_wait(time)
+        except Exception, e:
+            print(e)
     # def clickOnElementByXpath(self, driver):
     #     pass
 
