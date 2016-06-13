@@ -28,7 +28,7 @@ class myDriver(object):
             # self.desired_caps['appActivity'] = '.activity.SplashActivity'
             # self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', self.desired_caps)
             # print '连接完成'
-
+            print("开始设置desired_caps内容")
             self.desired_caps = {}
             self.desired_caps['udid'] = 'f599ef571c56f9f2ecd18a49244b2690285ec750'
             self.desired_caps['platformName'] = 'iOS'
@@ -68,21 +68,31 @@ class myDriver(object):
 
     def set_value(self, element_xpath, value):
         try:
-            element = self.driver.find_element_by_xpath()
+            sleep(3)
+            element = self.driver.find_element_by_xpath(element_xpath)
             self.driver.set_value(element, value)
+            print("输入成功")
         except Exception, e:
+            print("输入失败")
             raise e
 
     def close_app(self):
+        """Stop the running application, specified in the desired capabilities, on
+        the device.
+        """
         try:
             self.driver.close_app()
+            print("退出应用成功")
         except Exception, e:
+            print("退出应用失败")
             raise e
 
     def quit(self):
         try:
             self.driver.quit()
+            print("关闭成功")
         except Exception, e:
+            print("关闭失败")
             raise e
     # def clickOnElementByXpath(self, driver):
     #     pass
