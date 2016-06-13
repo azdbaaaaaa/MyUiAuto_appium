@@ -21,7 +21,7 @@ class ContactsAndroidTests(unittest.TestCase):
 
     def test_add_contacts(self):
         print('start sleep')
-        sleep(5)
+        sleep(7)
 
         # print("sleep 10s")
         self.driver.clickOnElementByXpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]")
